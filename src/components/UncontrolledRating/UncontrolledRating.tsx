@@ -3,7 +3,7 @@ import React, {useState} from "react";
 
 export function UncontrolledRating() {
     const [value, setValue] = useState(0);
-    const onClickValueHandler = (value: number)=>setValue(value);
+
     return (
         <div>
             <Star selected={value > 0} setValue={setValue} value={1}/>
