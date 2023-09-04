@@ -1,30 +1,35 @@
-import React, {useState} from "react";
+import {RatingValueType} from "../../App";
+
+type RatingPropsType = {
+    value: number
+    changeRating: (newRatingValue: RatingValueType) => void
+}
+export function Rating(props: RatingPropsType) {
 
 
-export function Rating() {
-    const [value, setValue] = useState(0);
-    const onClickValueHandler = (value: number)=>setValue(value);
     return (
         <div>
-            <Star selected={value > 0} callBack={() =>onClickValueHandler(1)}/>
-            <Star selected={value > 1} callBack={() =>onClickValueHandler(2)}/>
-            <Star selected={value > 2} callBack={() => onClickValueHandler(3)}/>
-            <Star selected={value > 3} callBack={() =>onClickValueHandler(4)}/>
-            <Star selected={value > 4} callBack={() =>onClickValueHandler(5)}/>
+            <Star selected={props.value > 0} starNum={1} changeRating={props.changeRating}/>
+            <Star selected={props.value > 1} starNum={2} changeRating={props.changeRating}/>
+            <Star selected={props.value > 2} starNum={3} changeRating={props.changeRating}/>
+            <Star selected={props.value > 3} starNum={4} changeRating={props.changeRating}/>
+            <Star selected={props.value > 4} starNum={5} changeRating={props.changeRating}/>
         </div>
     );
 }
 
 type StarPropsType = {
     selected: boolean
-    callBack: () => void
+    starNum: RatingValueType
+    changeRating: (newRatingValue: RatingValueType) => void
+
 }
 
 const Star = (props: StarPropsType) => {
-
+    const onClickHandler = () => {
+        props.changeRating(props.starNum);
+    }
     return (
-        <div className={'Star'} onClick={props.callBack}>
-            {props.selected ? <span><b>star </b></span> : <span>star </span>}
-        </div>
+             <span onClick={onClickHandler}>{props.selected ? <b>star </b> : 'star '}</span>
     );
 }

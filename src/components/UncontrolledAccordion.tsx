@@ -5,7 +5,7 @@ type AccordionPropsType = {
 
 }
 
-const Accordion: React.FC<AccordionPropsType> = (props) => {
+const UncontrolledAccordion: React.FC<AccordionPropsType> = (props) => {
     const [toggle, setToggle] = useState(false);
     const onClickToggleHandler = () => setToggle(!toggle);
     return (
@@ -37,4 +37,4 @@ const AccordionBody = () => {
     );
 }
 
-export default Accordion;
+export default UncontrolledAccordion;
