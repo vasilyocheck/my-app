@@ -1,0 +1,27 @@
+.itemBlock {
+    width: 200px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.optionsSelector {
+    background-color: yellow;
+}
+
+.option {
+    outline: yellow;
+
+    border-top: 1px solid #333333;
+}
+
+.option:last-child {
+    border-bottom: 1px solid #333333;
+}
+
+.option:hover {
+    background-color: yellow;
+
+}
