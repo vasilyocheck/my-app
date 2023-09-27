@@ -7,7 +7,7 @@ type ItemType = {
 }
 
 type SelectPropsItems = {
-    value: any
+    value?: any
     onChange: (value: any) => void
     items: ItemType[]
 }
@@ -38,8 +38,6 @@ const Select:React.FC<SelectPropsItems> = (props) => {
                     >{i.title}</div>
                 );
             })}
-
-            
         </div>
     );
 };
