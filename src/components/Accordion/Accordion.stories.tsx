@@ -1,13 +1,12 @@
-import type {Meta, StoryObj} from "@storybook/react";
-import { action } from '@storybook/addon-actions'
+import {action} from '@storybook/addon-actions'
 
 
 import {Accordion} from "./Accordion";
 import React, {useState} from "react";
 
-const meta: Meta<typeof Accordion> = {
+/*const meta: Meta<typeof Accordion> = {
     component: Accordion,
-}
+}*/
 
 export default {
     component: Accordion
