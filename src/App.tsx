@@ -6,8 +6,16 @@ import {OnOff} from "./components/OnOff/OnOff";
 import {Rating} from "./components/Rating/Rating";
 import {Accordion} from "./components/Accordion/Accordion";
 import Select from "./components/Select/Select";
+import {getBanknoteList, getTriangleType, sum} from "./lesson_8/lesson_8";
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
+
+const MemoizedSelect = React.memo(Select);
+const MemoizedAccordion = React.memo(Accordion);
+const MemoizedUncontrolledAccordion = React.memo(UncontrolledAccordion);
+const MemoizedRating = React.memo(Rating);
+const MemoizedUncontrolledRating = React.memo(UncontrolledRating);
+const MemoizedOnOff = React.memo(OnOff);
 
 
 function App() {
@@ -18,6 +26,8 @@ function App() {
     const changeIsOnStatus = () => {
         setIsOn(!isOn);
     }
+    let res = getBanknoteList(23);
+    console.log(res);
 
     const changeRating = (newRatingValue: RatingValueType) => {
         setRatingValue(newRatingValue);
@@ -35,19 +45,19 @@ function App() {
 
     return (
         <div className={'App'} >
-            <Select value={selectValue} onChange={changeSelectValue} items={cities} />
+            <MemoizedSelect value={selectValue} onChange={changeSelectValue} items={cities} />
             <TitleApp title={'This is APP COMPONENT'} />
             <TitleApp title={'Second Component'} />
-            <Accordion titleValue='Menu 3'
+            <MemoizedAccordion titleValue='Menu 3'
                        setAccordionIsCollapsed={setAccordionIsCollapsed}
                        accordionIsCollapsed={accordionIsCollapsed}/>
-            <UncontrolledAccordion titleValue={'Menu 1'} />
-            <UncontrolledAccordion titleValue={'Menu 2'} />
-            <Rating value={ratingValue}
+            <MemoizedUncontrolledAccordion titleValue={'Menu 1'} />
+            <MemoizedUncontrolledAccordion titleValue={'Menu 2'} />
+            <MemoizedRating value={ratingValue}
                     changeRating={changeRating}
             />
-            <UncontrolledRating />
-            <OnOff status={isOn} changeIsOnStatus={changeIsOnStatus}/>
+            <MemoizedUncontrolledRating />
+            <MemoizedOnOff status={isOn} changeIsOnStatus={changeIsOnStatus}/>
         </div>
 
     );
