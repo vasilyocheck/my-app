@@ -7,6 +7,7 @@ import {Rating} from "./components/Rating/Rating";
 import {Accordion} from "./components/Accordion/Accordion";
 import Select from "./components/Select/Select";
 import {getBanknoteList, getTriangleType, sum} from "./lesson_8/lesson_8";
+import {Clock} from "./components/Clock/Clock";
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -45,6 +46,7 @@ function App() {
 
     return (
         <div className={'App'} >
+            <Clock />
             <MemoizedSelect value={selectValue} onChange={changeSelectValue} items={cities} />
             <TitleApp title={'This is APP COMPONENT'} />
             <TitleApp title={'Second Component'} />
