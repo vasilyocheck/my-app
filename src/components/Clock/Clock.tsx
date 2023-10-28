@@ -2,7 +2,6 @@ import React, {FC, useEffect, useState} from 'react';
 import {makeDoubleDigitClock} from "./utilities/clock-double-digits";
 import styled from "styled-components";
 import bgImage from '../../assets/img/clock-face.png';
-import {ColorPicker} from "./ColorPicker/ColorPicker";
 import {ColorMenu} from "./ColorMenu/ColorMenu";
 
 export const Clock = () => {
@@ -33,7 +32,7 @@ export const Clock = () => {
 
     return (
         <StyledClockWrapper>
-            {/*<CypherClock hours={hours} minutes={minutes} seconds={seconds} />*/}
+            <CypherClock hours={hours} minutes={minutes} seconds={seconds} />
             <StyledAnalogClock bgImage={bgImage} bgColor={color}>
                 <StyledHoursArrow degree={hrDeg}/>
                 <StyledMinutesArrow degree={minDeg}/>
