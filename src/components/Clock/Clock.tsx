@@ -2,10 +2,17 @@ import React, {FC, useEffect, useState} from 'react';
 import {makeDoubleDigitClock} from "./utilities/clock-double-digits";
 import styled from "styled-components";
 import bgImage from '../../assets/img/clock-face.png';
+import {ColorPicker} from "./ColorPicker/ColorPicker";
+import {ColorMenu} from "./ColorMenu/ColorMenu";
 
 export const Clock = () => {
     const [date, setDate] = useState(new Date());
+    const [color, setColor] = useState("#aabbcc");
+    const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
 
+    const changeIsColorMenuOpen = () => {
+        setIsColorMenuOpen(!isColorMenuOpen);
+    }
     useEffect(() => {
         const intervalId = setInterval(() => {
             setDate(new Date());
@@ -25,16 +32,31 @@ export const Clock = () => {
     const hrDeg = date.getHours() % 12 * 30 + date.getMinutes() * 0.5;
 
     return (
-        <div>
-            <CypherClock hours={hours} minutes={minutes} seconds={seconds} />
-            <StyledAnalogClock bgImage={bgImage}>
+        <StyledClockWrapper>
+            {/*<CypherClock hours={hours} minutes={minutes} seconds={seconds} />*/}
+            <StyledAnalogClock bgImage={bgImage} bgColor={color}>
                 <StyledHoursArrow degree={hrDeg}/>
                 <StyledMinutesArrow degree={minDeg}/>
                 <StyledSecondsArrow degree={secDeg} />
             </StyledAnalogClock>
-        </div>
+            <ColorMenu color={color}
+                       setColor={setColor}
+                       colorMenuStatus={isColorMenuOpen}
+                       changeMenuStatus={changeIsColorMenuOpen}
+            />
+        </StyledClockWrapper>
     );
 };
+
+const StyledClockWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;  
+  gap: 30px;
+`;
+
+
 
 type CypherClockPropsType = {
     hours: string
@@ -53,12 +75,13 @@ const CypherClock: FC<CypherClockPropsType> = ({hours, minutes, seconds}) => {
 
 type StyledAnalogClockPropsType = {
     bgImage: string
+    bgColor: string
 }
 
 const StyledAnalogClock = styled.div<StyledAnalogClockPropsType>`
   width: 400px;
   height: 400px;
-  background-color: #c0fc49;
+  background-color: ${props => props.bgColor};
   border-radius: 50%;
   position: relative;
   background-image: ${props => `url(${props.bgImage})`};
