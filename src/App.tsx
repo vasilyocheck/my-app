@@ -47,7 +47,7 @@ function App() {
     return (
         <div className={'App'} >
             <Clock />
-            <MemoizedSelect value={selectValue} onChange={changeSelectValue} items={cities} />
+            {/*<MemoizedSelect value={selectValue} onChange={changeSelectValue} items={cities} />
             <TitleApp title={'This is APP COMPONENT'} />
             <TitleApp title={'Second Component'} />
             <MemoizedAccordion titleValue='Menu 3'
@@ -59,7 +59,7 @@ function App() {
                     changeRating={changeRating}
             />
             <MemoizedUncontrolledRating />
-            <MemoizedOnOff status={isOn} changeIsOnStatus={changeIsOnStatus}/>
+            <MemoizedOnOff status={isOn} changeIsOnStatus={changeIsOnStatus}/>*/}
         </div>
 
     );
